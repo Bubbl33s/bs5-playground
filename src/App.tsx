@@ -2,7 +2,7 @@ import Editor from "./components/Editor";
 
 function App() {
   return (
-    <div className="h-screen">
+    <div className="vh-100">
       <Editor />
     </div>
   );
