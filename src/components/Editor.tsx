@@ -5,16 +5,16 @@ export default function Editor() {
   const { htmlCode, setHtmlCode, progress, expectedOutput } = useEditor();
 
   return (
-    <div className="h-screen max-h-screen flex">
-      <div className="flex flex-col w-1/2 bg-gray-900">
+    <div className="vh-100 d-flex">
+      <div className="d-flex flex-column w-50">
         {/* HTML editor */}
-        <div className="flex-grow">
+        <div className="flex-grow-1">
           <HtmlEditor setHtmlCode={setHtmlCode} />
         </div>
         {/* Barra de progreso */}
-        <div className="w-full border-2 border-gray-900 bg-gray-200">
+        <div className="w-100 border border-2 border-black">
           <div
-            className="bg-cyan-500 text-black text-center"
+            className="bg-info text-black text-center"
             style={{ width: `${progress}%` }}
           >
             {progress.toFixed(2)}%
@@ -23,15 +23,15 @@ export default function Editor() {
       </div>
 
       {/* HTML preview and result*/}
-      <div className="flex flex-col w-1/2">
+      <div className="d-flex flex-column w-50">
         <div
           id="editor-preview"
           dangerouslySetInnerHTML={{ __html: htmlCode }}
-          className="border-2 border-gray-900 w-full h-full"
+          className="border border-2 border-black w-100 h-100"
         ></div>
         <div
           id="expected-preview"
-          className="border-2 border-gray-900 w-full h-full"
+          className="border border-2 border-black w-100 h-100"
           dangerouslySetInnerHTML={{ __html: expectedOutput }}
         ></div>
       </div>
