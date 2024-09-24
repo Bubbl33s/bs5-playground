@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import html2canvas from "html2canvas";
 import pixelmatch from "pixelmatch";
 import debounce from "lodash.debounce";
+import { levelsData } from "../data/levels";
 
 export default function useEditor() {
   const [htmlCode, setHtmlCode] = useState<string>("");
   const [progress, setProgress] = useState<number>(0);
+  const [currentLevel, setCurrentLevel] = useState<number>(
+    parseInt(localStorage.getItem("currentLevel") || "1")
+  );
   const [initialDiff, setInitialDiff] = useState(0);
-
-  const expectedOutput = `<div class="h-100 d-flex justify-content-center align-items-center">
-  <p class="fw-bold fs-1">¡Hola mundo!</p>
-</div>`;
 
   // Función para capturar el ImageData de un elemento HTML
   const captureImageData = async (elementId: string) => {
@@ -103,6 +103,8 @@ export default function useEditor() {
     htmlCode,
     setHtmlCode,
     progress,
-    expectedOutput,
+    levelsData,
+    currentLevel,
+    setCurrentLevel,
   };
 }

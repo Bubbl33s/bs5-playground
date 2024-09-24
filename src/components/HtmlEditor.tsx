@@ -4,9 +4,10 @@ import * as emmetMonaco from "emmet-monaco-es";
 
 type HtmlEditorProps = {
   setHtmlCode: (code: string) => void;
+  template?: string;
 };
 
-export default function HtmlEditor({ setHtmlCode }: HtmlEditorProps) {
+export default function HtmlEditor({ setHtmlCode, template }: HtmlEditorProps) {
   function handleEditorWillMount(monaco: Monaco) {
     emmetMonaco.emmetHTML(monaco);
 
@@ -20,7 +21,7 @@ export default function HtmlEditor({ setHtmlCode }: HtmlEditorProps) {
 
   const editorOptions: EditorProps = {
     language: "html",
-    defaultValue: `<div class="">\n\n</div>`,
+    defaultValue: template || "",
     theme: "vs-dark",
     options: {
       wordWrap: "on",
