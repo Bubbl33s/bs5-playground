@@ -8,7 +8,7 @@ export default function HtmlOutput({ id, htmlCode }: HtmlOutputProps) {
     <div
       id={id}
       dangerouslySetInnerHTML={{ __html: htmlCode }}
-      className="border border-2 border-black w-100 h-100"
+      className="border rounded-2 w-100 h-100 shadow-sm"
     ></div>
   );
 }
