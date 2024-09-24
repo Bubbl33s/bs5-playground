@@ -1,7 +1,8 @@
-import HtmlEditor from "./HtmlEditor";
+import HtmlEditor from "../components/HtmlEditor";
+import HtmlOutput from "../components/HtmlOutput";
 import useEditor from "../hooks/useEditor";
 
-export default function Editor() {
+export default function MainPage() {
   const { htmlCode, setHtmlCode, progress, expectedOutput } = useEditor();
 
   return (
@@ -15,11 +16,7 @@ export default function Editor() {
 
       {/* HTML preview and result*/}
       <div className="d-flex flex-column w-50">
-        <div
-          id="editor-preview"
-          dangerouslySetInnerHTML={{ __html: htmlCode }}
-          className="border border-2 border-black w-100 h-100"
-        ></div>
+        <HtmlOutput id="editor-preview" htmlCode={htmlCode} />
         {/* Barra de progreso */}
         <div className="w-100 border-start border-end border-2 border-black position-relative">
           <p className="d-flex m-0 py-1 justify-content-center z-3 position-relative">
@@ -30,11 +27,7 @@ export default function Editor() {
             style={{ width: `${progress}%` }}
           ></div>
         </div>
-        <div
-          id="expected-preview"
-          className="border border-2 border-black w-100 h-100"
-          dangerouslySetInnerHTML={{ __html: expectedOutput }}
-        ></div>
+        <HtmlOutput id="expected-preview" htmlCode={expectedOutput} />
       </div>
     </div>
   );
