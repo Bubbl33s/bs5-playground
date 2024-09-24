@@ -1,5 +1,4 @@
-import HtmlEditor from "../components/HtmlEditor";
-import HtmlOutput from "../components/HtmlOutput";
+import { HtmlEditor, HtmlOutput, ProgressBar } from "../components";
 import useEditor from "../hooks/useEditor";
 
 export default function MainPage() {
@@ -23,20 +22,7 @@ export default function MainPage() {
             </div>
           </div>
 
-          <div
-            className="progress"
-            role="progressbar"
-            aria-label="Basic example"
-            aria-valuenow={0}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            style={{ height: "0.6rem", backgroundColor: "#cecece" }}
-          >
-            <div
-              className="progress-bar"
-              style={{ width: "50%", backgroundColor: "#000" }}
-            ></div>
-          </div>
+          <ProgressBar progress={25} height="0.6rem" />
         </header>
 
         <div className="d-flex flex-grow-1 gap-3">
@@ -52,23 +38,11 @@ export default function MainPage() {
           <div className="d-flex flex-column w-50 gap-2">
             <HtmlOutput id="editor-preview" htmlCode={htmlCode} />
 
-            {/* Barra de progreso */}
-            <div
-              className="progress"
-              role="progressbar"
-              aria-label="Basic example"
-              aria-valuenow={0}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              style={{ height: "4rem", backgroundColor: "#cecece" }}
-            >
-              <div
-                className="progress-bar fs-6"
-                style={{ width: `${progress}%`, backgroundColor: "#000" }}
-              >
-                <p className="m-0">{progress.toFixed(2)}%</p>
-              </div>
-            </div>
+            <ProgressBar
+              progress={progress}
+              height="4rem"
+              textContent={`${progress.toFixed(2)}%`}
+            />
 
             <HtmlOutput id="expected-preview" htmlCode={expectedOutput} />
           </div>

@@ -16,44 +16,6 @@ export default function HtmlEditor({ setHtmlCode }: HtmlEditorProps) {
         emmet: true, // Habilitar Emmet
       },
     });
-    /*
-    monaco.languages.registerCompletionItemProvider("html", {
-      provideCompletionItems: (model, position) => {
-        const wordInfo = model.getWordUntilPosition(position);
-        const range = new monaco.Range(
-          position.lineNumber,
-          wordInfo.startColumn,
-          position.lineNumber,
-          wordInfo.endColumn
-        );
-
-        const textUntilPosition = model.getValueInRange(
-          new monaco.Range(1, 1, position.lineNumber, position.column)
-        );
-        const classAttributeRegex = /class\s*=\s*["'][^"']*$/;
-        const isInsideClassAttribute =
-          classAttributeRegex.test(textUntilPosition);
-
-        if (!isInsideClassAttribute) {
-          return { suggestions: [] };
-        }
-
-
-        const suggestions = completions.map(([label, info]) => ({
-          label,
-          kind: monaco.languages.CompletionItemKind.Property,
-          insertText: label,
-          insertTextRules:
-            monaco.languages.CompletionItemInsertTextRule.InsertAsSnippet,
-          documentation: info,
-          range,
-        }));
-
-        return {
-          suggestions,
-        };
-      },
-    });*/
   }
 
   const editorOptions: EditorProps = {
